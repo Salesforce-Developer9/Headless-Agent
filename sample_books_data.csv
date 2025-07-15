@@ -1,0 +1,41 @@
+Name,Genre__c,Language__c,Price__c
+"The Silent Patient","Thriller / Suspense","English",15.99
+"Dune","Science Fiction (Sci-Fi)","English",18.50
+"The Seven Husbands of Evelyn Hugo","Romance","English",14.99
+"Where the Crawdads Sing","Mystery","English",16.75
+"The Midnight Library","Fantasy","English",13.99
+"Educated","Historical Fiction","English",17.50
+"Circe","Magical Realism","English",15.25
+"The Handmaid's Tale","Dystopian","English",14.50
+"Gone Girl","Thriller / Suspense","English",16.99
+"The Hobbit","Fantasy","English",12.99
+"1984","Dystopian","English",13.50
+"Pride and Prejudice","Romance","English",11.99
+"The Girl with the Dragon Tattoo","Mystery","English",15.75
+"The Road","Dystopian","English",14.25
+"It","Horror","English",19.99
+"The Great Gatsby","Historical Fiction","English",12.50
+"Neuromancer","Science Fiction (Sci-Fi)","English",16.50
+"The Princess Bride","Adventure","English",13.75
+"Dracula","Horror","English",14.99
+"One Hundred Years of Solitude","Magical Realism","Spanish",18.99
+"Don Quixote","Adventure","Spanish",22.50
+"Cien años de soledad","Magical Realism","Spanish",17.75
+"El amor en los tiempos del cólera","Romance","Spanish",16.25
+"The Little Prince","Adventure","French",12.99
+"The Count of Monte Cristo","Adventure","French",24.99
+"Madame Bovary","Romance","French",15.50
+"The Stranger","Historical Fiction","French",13.25
+"All Quiet on the Western Front","Historical Fiction","German",16.75
+"The Metamorphosis","Fantasy","German",11.50
+"Siddhartha","Historical Fiction","German",14.25
+"Norwegian Wood","Romance","Japanese",17.99
+"1Q84","Science Fiction (Sci-Fi)","Japanese",21.50
+"Kafka on the Shore","Magical Realism","Japanese",18.75
+"The Kite Runner","Historical Fiction","English",15.99
+"Life of Pi","Adventure","English",14.50
+"The Alchemist","Adventure","Portuguese",13.99
+"Crime and Punishment","Thriller / Suspense","Russian",19.50
+"War and Peace","Historical Fiction","Russian",29.99
+"The Brothers Karamazov","Historical Fiction","Russian",25.50
+"Anna Karenina","Romance","Russian",22.75 

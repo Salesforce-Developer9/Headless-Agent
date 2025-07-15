@@ -1,0 +1,168 @@
+<template>
+    <div class="slds-p-around_medium">
+        <!-- Header Section -->
+        <div class="slds-page-header">
+            <div class="slds-page-header__row">
+                <div class="slds-page-header__col-title">
+                    <div class="slds-media">
+                        <div class="slds-media__figure">
+                            <lightning-icon icon-name="custom:custom63" alternative-text="Books" size="medium"></lightning-icon>
+                        </div>
+                        <div class="slds-media__body">
+                            <h1 class="slds-page-header__title slds-truncate" title="Book Search">Book Library</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Section -->
+        <div class="slds-grid slds-gutters slds-wrap slds-m-bottom_large">
+            <div class="slds-col slds-size_1-of-1 slds-large-size_8-of-12">
+                <lightning-input
+                    type="search"
+                    label="Search Books"
+                    placeholder={searchPlaceholder}
+                    onchange={handleSearchChange}
+                    variant="label-hidden"
+                    class="search-input"
+                ></lightning-input>
+            </div>
+            <div class="slds-col slds-size_1-of-1 slds-large-size_4-of-12">
+                <lightning-button
+                    variant="neutral"
+                    label="Clear Search"
+                    title="Clear Search"
+                    onclick={handleClearSearch}
+                    class="slds-m-left_x-small"
+                ></lightning-button>
+            </div>
+        </div>
+
+        <!-- Loading Spinner -->
+        <template if:true={isLoading}>
+            <div class="slds-text-align_center slds-p-around_medium">
+                <lightning-spinner alternative-text="Loading..." size="medium"></lightning-spinner>
+            </div>
+        </template>
+
+        <!-- Books Grid -->
+        <template if:true={hasBooks}>
+            <div class="slds-grid slds-gutters slds-wrap">
+                <template for:each={books} for:item="book">
+                    <div key={book.Id} class="slds-col slds-size_1-of-1 slds-small-size_1-of-2 slds-medium-size_1-of-3 slds-large-size_1-of-4">
+                        <article class="slds-card book-card">
+                            <div class="slds-card__header slds-grid">
+                                <header class="slds-media slds-media_center slds-has-flexi-truncate">
+                                    <div class="slds-media__figure">
+                                        <lightning-icon 
+                                            icon-name="utility:knowledge_base" 
+                                            alternative-text="Book" 
+                                            size="medium"
+                                            class="book-icon">
+                                        </lightning-icon>
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <h2 class="slds-card__header-title">
+                                            <span class="slds-text-heading_small slds-truncate" title={book.Name}>
+                                                {book.Name}
+                                            </span>
+                                        </h2>
+                                    </div>
+                                    <div class="slds-no-flex">
+                                        <lightning-button-icon
+                                            icon-name="utility:favorite_alt"
+                                            variant="border-filled"
+                                            alternative-text="Favorite"
+                                            title="Toggle Favorite"
+                                            data-book-id={book.Id}
+                                            onclick={handleFavoriteToggle}
+                                            class="favorite-button"
+                                        ></lightning-button-icon>
+                                    </div>
+                                </header>
+                            </div>
+                            <div class="slds-card__body slds-card__body_inner">
+                                <div class="book-details">
+                                    <div class="slds-grid slds-gutters slds-wrap">
+                                        <div class="slds-col slds-size_1-of-1">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label slds-text-body_small">Genre:</label>
+                                                <div class="slds-form-element__control">
+                                                    <span class="slds-badge slds-badge_lightest genre-badge">{book.Genre__c}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-1 slds-m-top_small">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label slds-text-body_small">Language:</label>
+                                                <div class="slds-form-element__control">
+                                                    <span class="slds-badge slds-badge_inverse language-badge">{book.Language__c}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slds-col slds-size_1-of-1 slds-m-top_small">
+                                            <div class="slds-form-element">
+                                                <label class="slds-form-element__label slds-text-body_small">Price:</label>
+                                                <div class="slds-form-element__control">
+                                                    <span class="slds-text-heading_medium price-text">{book.priceFormatted}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </template>
+            </div>
+        </template>
+
+        <!-- No Books Found Message -->
+        <template if:false={hasBooks}>
+            <template if:false={isLoading}>
+                <div class="slds-text-align_center slds-p-around_large">
+                    <lightning-icon icon-name="utility:search" size="large" class="slds-m-bottom_small"></lightning-icon>
+                    <h3 class="slds-text-heading_medium">No books found</h3>
+                    <p class="slds-text-body_regular">Try adjusting your search criteria or clear the search to see all books.</p>
+                </div>
+            </template>
+        </template>
+
+        <!-- Recommendations Notification Popup -->
+        <template if:true={showRecommendations}>
+            <div class="recommendations-notification">
+                <div class="notification-container">
+                    <header class="notification-header">
+                        <div class="notification-title">
+                            <lightning-icon icon-name="utility:magicwand" size="x-small" class="magic-icon"></lightning-icon>
+                            <span class="title-text">Book Recommendations</span>
+                        </div>
+                        <lightning-button-icon 
+                            icon-name="utility:close" 
+                            onclick={handleCloseRecommendations} 
+                            alternative-text="close" 
+                            variant="bare" 
+                            size="small"
+                            class="close-button">
+                        </lightning-button-icon>
+                    </header>
+                    <div class="notification-content">
+                        <p class="selected-book">Based on: <strong>{selectedBookName}</strong></p>
+                        <template if:true={hasRecommendations}>
+                            <div class="recommendations-text">
+                                <lightning-formatted-rich-text value={recommendations}></lightning-formatted-rich-text>
+                            </div>
+                        </template>
+                        <template if:false={hasRecommendations}>
+                            <div class="loading-recommendations">
+                                <lightning-spinner alternative-text="Loading..." size="small"></lightning-spinner>
+                                <p class="loading-text">Getting recommendations...</p>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+</template> 

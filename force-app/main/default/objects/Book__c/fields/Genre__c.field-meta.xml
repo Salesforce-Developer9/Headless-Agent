@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Genre__c</fullName>
+    <label>Genre</label>
+    <required>false</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Historical Fiction</fullName>
+                <default>false</default>
+                <label>Historical Fiction</label>
+            </value>
+            <value>
+                <fullName>Science Fiction (Sci-Fi)</fullName>
+                <default>false</default>
+                <label>Science Fiction (Sci-Fi)</label>
+            </value>
+            <value>
+                <fullName>Fantasy</fullName>
+                <default>false</default>
+                <label>Fantasy</label>
+            </value>
+            <value>
+                <fullName>Mystery</fullName>
+                <default>false</default>
+                <label>Mystery</label>
+            </value>
+            <value>
+                <fullName>Thriller / Suspense</fullName>
+                <default>false</default>
+                <label>Thriller / Suspense</label>
+            </value>
+            <value>
+                <fullName>Horror</fullName>
+                <default>false</default>
+                <label>Horror</label>
+            </value>
+            <value>
+                <fullName>Romance</fullName>
+                <default>false</default>
+                <label>Romance</label>
+            </value>
+            <value>
+                <fullName>Adventure</fullName>
+                <default>false</default>
+                <label>Adventure</label>
+            </value>
+            <value>
+                <fullName>Dystopian</fullName>
+                <default>false</default>
+                <label>Dystopian</label>
+            </value>
+            <value>
+                <fullName>Magical Realism</fullName>
+                <default>false</default>
+                <label>Magical Realism</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
