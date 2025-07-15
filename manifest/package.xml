@@ -24,6 +24,7 @@
 	</types>
 	<types>
 		<members>Book__c</members>
+		<members>Library</members>
 		<name>CustomTab</name>
 	</types>
 	<types>
